@@ -45,37 +45,14 @@ app.use('/book/:id', async (req, res, next) => {
     }
 });
 
-app.use('/book', async (req, res, next) => {
-    try {
-
-        const books = await Book.find();
-    
-        return res.json({
-            success: true,
-            result: books.length,
-            data: {
-                books
-            }
-        })
-
-    } catch (err) {
-
-        console.log(err);
-
-        return res.status(404).json({ 
-            success: false,
-            message: `no books found`,
-            err: err
-        })
-    
-    }
+app.get('/', (req, res, next) => {
+    res.send('Welcome to product service');
 });
 
 app.all('*', (req, res, next) => {
     return res.status(404).json({ 
         success: false,
-        message: `Can't find ${req.originalUrl}`,
-        err: err
+        message: `Can't find ${req.originalUrl}`
     })
 })
 

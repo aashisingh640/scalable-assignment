@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"cd product-service && npm start\" \"cd customer-service && npm start\"",
-    "install": "concurrently \"cd product-service && npm i\" \"cd customer-service && npm i\""
+    "start": "concurrently \"cd product-service && npm start\" \"cd inventory-service && npm start\" \"cd customer-service && npm start\"",
+    "install": "concurrently \"cd product-service && npm i\" \"cd inventory-service && npm i\" \"cd customer-service && npm i\""
   },
   "author": "",
   "license": "ISC",

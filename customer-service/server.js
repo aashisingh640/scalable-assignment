@@ -12,8 +12,7 @@ mongoose.connect(process.env.DATABASE).then(con => {
 }).catch(err => console.log('error in connecting database for customer-service...', err))
 
 app.get('/', (req,res,_next)=>{
-
-    res.send('Welcome');
+    res.send('Welcome to customer service');
 });
 
 app.get('/user', async (req,res,_next)=>{
@@ -81,4 +80,12 @@ app.get('/user/:id', async (req,res,_next)=>{
     }
 
 });
+
+app.all('*', (req, res, next) => {
+    return res.status(404).json({ 
+        success: false,
+        message: `Can't find ${req.originalUrl}`
+    })
+})
+
 app.listen(process.env.PORT || 4000,()=> console.log('customer-service server running on port ' + process.env.PORT || 4000));
